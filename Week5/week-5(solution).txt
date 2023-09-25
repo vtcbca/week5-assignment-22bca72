@@ -1,0 +1,40 @@
+#python program create csv file student.csv(sid,sname,city,contact)
+
+import csv
+fields=['Sid','Sname','City','Contact']
+rows=[[1,'neha','madhi',7860178460],
+     
+      [2,'sneha','bardoli',4578309827],
+     
+      [3,'jagruti','surat',2987564029],
+      
+      [4,'amisha','vyara',9990592098],
+      
+      [5,'divya','surat',7860112567]]
+filename="c:\sqlite3\student.csv"
+
+#insert record through user input
+l=[]
+for i in range(5):
+    id=int(input("Enter id:"))
+    name=input("Enter name:")
+    city=input("Enter city:")
+    contact=int(input("Enter contact number:"))
+    tuple=(id,name,city,contact)
+    l.append(tuple)
+
+with open(filename,'w',newline='')as f:
+    csvwriter=csv.writer(f)
+    csvwriter.writerow(fields)
+    csvwriter.writerows(rows)
+    csvwriter.writerows(l)
+
+# Reading data from csv file.
+with open(filename,'r') as f:
+    csvreader=csv.reader(f)
+    for record in csvreader:
+        print(record)
+print("Total number of rows:%d"%(csvreader.line_num))
+
+
+
